@@ -1,0 +1,42 @@
+entity as type
+using ident = entity
+type ident = entity
+[atomic|async] func ident(input_type) : ret_type = func_def
+let ident : type/entity = entity
+use ident [=] any
+
+list = [entity, ...] => [ident, ...]
+dict = {ident: entity, ...} => {ident, ...}
+tuple = (entity, ...) => ident, ...
+module = {ident, ...} => {ident, ...}
+entity = list | dict | ident | type | functor | array | matrix | factor
+factor = Number | String | bool
+any
+null 空值
+ret
+
+// 数据访问操作符
+entity[entity]
+// 函数调用操作符
+entity.functor
+functor entity
+functor(entity)
+
+// 实体与函子（概念）：entity functor
+// 类型与别名（关键字）: type(type only) as(type check) use(ident alias) let(copy, inherit-merge)
+// 访问和调用（运算符）: entity[entity] entity.functor functor entity functor(entity)
+// 构造与解包（语法）: [entity, ...] = {ident: entity, ...} (在 = 左边为解包，右边为构造)
+// 原子与异步（调度）: atomic（对外） async（对内）
+
+// let 仅用于标记实体，匿名实体不执行拷贝，具名实体执行拷贝
+// use 仅仅是一个别名，无论是对于实体还是类型，不执行任何拷贝
+
+// 关键字 let, use, as, type, func, ret, null, any, atomic, async, global
+// 内置类型（准关键字）number, array[1...5], matrix, string, bool, list, dict, module
+// 内置函数（全局标识符）apply, maybe, assert, abort, psl, xml, json, from, print, analyze, execute, save, load, merge, to_cpu, to_gpu, to_task
+// 标准类型（标准库类型）Vertex, Edge, Graph, Star, Galaxy, Universe
+// 运算符 (entity as type 类型检查/转换 narrowing) (ident : type/ident 实体实现/继承 inheriting) (-> 返回类型)
+
+
+
+// PSL functor 是有状态的，且默认是异步的、开放的、动态的

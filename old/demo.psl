@@ -1,0 +1,150 @@
+// 基本特色
+// 矩阵类型原生支持numpy各类操作，包括切片等
+// 结构化数据类型原生支持python各类操作
+// 简化数据导入导出和类型检查
+// 函数的链式调用
+// 原生支持异步操作
+// 安全性
+// 便于编译成python代码
+
+// 基本数据类型
+// Number, String, bool
+// 数组类型（对应numpy数组，只能存储Number）
+// array, matrix
+// 结构化数据类型（对应python对象，可以存储上面所有类型）
+// list, dict(entity)
+// 函数或函数
+// functor
+// 整个代码文件为一个模块，可以定义执行入口
+// module
+
+// use ident [=] entity 别名，可以是类型、实体或函数，也可以是整个模块
+// from<parser> url 数据或模块解析 <> 模板参数
+// as type 显式类型检查（也可以理解为类型转换）
+use vtx1 from<xml> "xxx.xml" as vertex
+use vtx2 from<json> "xxx.json" as edge
+
+let vtx3 = load<xml> "xxx.xml" as vertex
+
+use { task, edge, myGraph as graph } from<psl> "lib.psl"
+
+use vertexId = Number
+use load = from
+
+global type link = {
+    from : vertexId,
+    to : vertexId
+}
+
+type graph = {
+
+}
+
+type vertex = {
+    name? : String,
+    id : String,
+    edge : edge,
+    graph : graph,
+}
+
+type component = {
+
+}
+
+type task = {
+
+}
+
+let signal : Array[4] = [0, 1, 2, 3]
+let signal2D : Matrix[4][4] = [
+    [0, 1, 2, 3],
+    [0, 1, 2, 3],
+    [0, 1, 2, 3],
+    [0, 1, 2, 3]
+]
+
+atomic func print(input : any) -> null {
+
+}
+
+inner atomic func to_task<name : String, id : Number> : Any -> Task = {
+    # inner function
+}
+
+// . 函数调用操作符，支持链式调用
+let result = signal.process.run.print
+result[0].analyze
+result[1].print
+[signal1, signal2].dispatch<cpu, 0>.run.analyze<eye>
+save signal1
+
+transmitter{}=>fiber=>receiver
+fiber.analyze<eye>
+# 多类型光纤、发射机组合、参数
+# tenserflow pytorch 计算图 模型
+# 建模运算符 => 类型推断
+# 组件链接，参数赋值，内部结构
+
+QAM->fork
+    fiber->receiver
+    analyzer
+
+SSMF
+Noise@(0, 0)
+A
+r1 = QAM->SSMF
+r2 = QAM->fork->SSMF
+[r1, r2]->A
+
+enum Color {
+    Red,
+    Green,
+    Blue
+}
+
+set_link<comp1, comp2>([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+set_port<comp>("input", 'l', 0)
+set_size
+set_bias
+
+超参是用来实例化函子的
+
+func()
+input : in signal -> output out signal
+set output signal
+is port map
+
+use namespace
+use {...} from<psl> "lib.psl"
+
+proc 
+
+comp {
+    func1
+    func2
+    func3
+}
+
+let 实例化关键字
+
+static
+
+let comp1 = comp<> at (1, 2)
+
+控制语言（解释器控制，而非流程控制）
+非计算语言
+声明式语言
+脚本语言
+通用数据语言
+符号语言
+
+PSL仅描述逻辑信息
+不建议使用PSL描述视图信息
+视图要通过可视化操作界面调整，不能指望其能够动态修改PSL，人为修改PSL中的视图信息也是不可取的
+
+Language Definition Interface
+Graphical Definition Interface
+
+graphics annotations
+@graphics
+@(x, y, w, h)

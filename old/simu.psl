@@ -1,0 +1,69 @@
+// 从外部json格式文件中导入数据实体
+use vertices from<json> "./test data/example2.1/vertex_data.json" as list[Vertex]
+use edges from<json> "./test data/example2.1/edge_data.json" as list[Edge]
+
+// 从PSL标准库中导入常用类型定义
+use { GraphEntity, Task } from "lib.psl"
+
+// 创建一个实体，继承GraphEntity的默认值，并修改scrutiny属性
+let ge : GraphEntity = {
+    scrutiny = True
+}
+
+// 针对导入的list类型的数据，使用for_each方法，对每个元素执行指定的操作
+// 本例中，对每个元素执行add_vertex或add_edge操作，将元素添加到ge实体中
+vertices.for_each<add_vertex<ge>>
+edges.for_each<add_edge<ge>>
+
+// 将ge实体转换为Task类型的实体，设置id和priority属性
+let task : Task = ge.to_task<id="test_project", priority="LOW">
+
+// 打印task实体信息，也可以写作 print<Task>(task) 或者 task.print<Task>
+print<Task> task
+
+// 执行task实体，将执行结果保存到result实体中
+let result = task.execute
+
+print result
+
+// 使用眼图分析result实体
+result.analyze<eye>
+Result.eye
+
+for <let i=1, i<10, i++> {
+    print i
+    continue;
+    break;
+}
+
+if <i == 10> {
+    print "i is 10"
+} elif <i == 9> {
+    print "i is not 10"
+} else {
+    print "i is not 10 or 9"
+}
+
+while <i < 10> {
+    print i
+    i++
+}
+
+continue
+break
+exit
+
+get input
+ret output
+
+exec(StmtBlock, SuperList, InputEntity)
+
+运算符
+.
+...
+
+
+字符串
+命令
+代换
+分组

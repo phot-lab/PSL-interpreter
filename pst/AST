@@ -1,0 +1,1582 @@
+Program <Program -> StmtList>
+|--StmtList <StmtList -> StmtList_star_1>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> ExprStmt>
+   |  |--ExprStmt <ExprStmt -> ExprStmt_opti_1 EntityExpr StmtEnd>
+   |     |--Optional <ExprStmt_opti_1 -> Annotations>
+   |     |  |--Annotations <Annotations -> Annotations_star_1>
+   |     |     |--Annotation <Annotation -> @ DictPack>
+   |     |     |  |--DictPack <DictPack -> { SepMark DictPack_opti_2 SepMark }>
+   |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |--Optional <DictPack_opti_2 -> KeyValExpr DictPack_star_1>
+   |     |     |     |  |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |     |     |  |  |--IdentRef <IdentRef -> Ident>
+   |     |     |     |  |  |  |--`x` at <1:3>
+   |     |     |     |  |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |     |     |  |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |     |     |  |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |     |     |  |     |     |--LinkCall <LinkCall -> Entity>
+   |     |     |     |  |     |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |     |     |  |     |           |--Literal <Literal -> Value>
+   |     |     |     |  |     |           |  |--Value <Value -> Int Value_opti_1>
+   |     |     |     |  |     |           |     |--`3` at <1:5>
+   |     |     |     |  |     |           |     |--Optional <Value_opti_1 -> >
+   |     |     |     |  |     |           |--Optional <Entity_opti_1 -> >
+   |     |     |     |  |     |--Optional <EntityExpr_opti_1 -> >
+   |     |     |     |  |--StarList <DictPack_star_1 -> , SepMark KeyValExpr DictPack_star_1>
+   |     |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |     |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |     |     |     |  |--IdentRef <IdentRef -> Ident>
+   |     |     |     |     |  |  |--`y` at <1:8>
+   |     |     |     |     |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |     |     |     |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |     |     |     |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |     |     |     |     |     |--LinkCall <LinkCall -> Entity>
+   |     |     |     |     |     |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |     |     |     |     |           |--Literal <Literal -> Value>
+   |     |     |     |     |     |           |  |--Value <Value -> Int Value_opti_1>
+   |     |     |     |     |     |           |     |--`1` at <1:10>
+   |     |     |     |     |     |           |     |--Optional <Value_opti_1 -> >
+   |     |     |     |     |     |           |--Optional <Entity_opti_1 -> >
+   |     |     |     |     |     |--Optional <EntityExpr_opti_1 -> >
+   |     |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |     |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |     |     |     |  |--IdentRef <IdentRef -> Ident>
+   |     |     |     |     |  |  |--`style` at <1:17>
+   |     |     |     |     |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |     |     |     |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |     |     |     |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |     |     |     |     |     |--LinkCall <LinkCall -> Entity>
+   |     |     |     |     |     |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |     |     |     |     |           |--Literal <Literal -> String>
+   |     |     |     |     |     |           |  |--`"bold"` at <1:24>
+   |     |     |     |     |     |           |--Optional <Entity_opti_1 -> >
+   |     |     |     |     |     |--Optional <EntityExpr_opti_1 -> >
+   |     |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |     |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |     |     |        |--IdentRef <IdentRef -> Ident>
+   |     |     |     |        |  |--`color` at <1:31>
+   |     |     |     |        |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |     |     |           |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |     |     |           |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |     |     |           |     |--LinkCall <LinkCall -> Entity>
+   |     |     |     |           |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |     |     |           |           |--Literal <Literal -> String>
+   |     |     |     |           |           |  |--`"red"` at <1:37>
+   |     |     |     |           |           |--Optional <Entity_opti_1 -> >
+   |     |     |     |           |--Optional <EntityExpr_opti_1 -> >
+   |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |--`\n` at <2:0>
+   |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |           |--Literal <Literal -> MultiStr>
+   |     |  |           |  |--`'''\nImpact of System Noise and Nonlinearities on a 16-QAM Signal in a Radio-over-Fiber Transmission\n'''` at <4:3>
+   |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |--StmtEnd <StmtEnd -> SepMark>
+   |        |--SepMark <SepMark -> SepMark_star_1>
+   |           |--`\n\n` at <6:0>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> ExprStmt>
+   |  |--ExprStmt <ExprStmt -> ExprStmt_opti_1 EntityExpr StmtEnd>
+   |     |--Optional <ExprStmt_opti_1 -> >
+   |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |           |--Literal <Literal -> MultiStr>
+   |     |  |           |  |--`'''\nThe relative constellation ...\n'''` at <8:3>
+   |     |  |           |--Optional <Entity_opti_1 -> Annotation>
+   |     |  |              |--Annotation <Annotation -> @ DictPack>
+   |     |  |                 |--DictPack <DictPack -> { SepMark DictPack_opti_2 SepMark }>
+   |     |  |                    |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |                    |--Optional <DictPack_opti_2 -> KeyValExpr DictPack_star_1>
+   |     |  |                    |  |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |                    |  |  |--IdentRef <IdentRef -> Ident>
+   |     |  |                    |  |  |  |--`x` at <8:6>
+   |     |  |                    |  |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |                    |  |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |                    |  |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |                    |  |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |                    |  |     |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |                    |  |     |           |--Literal <Literal -> Value>
+   |     |  |                    |  |     |           |  |--Value <Value -> Int Value_opti_1>
+   |     |  |                    |  |     |           |     |--`2` at <8:8>
+   |     |  |                    |  |     |           |     |--Optional <Value_opti_1 -> >
+   |     |  |                    |  |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |                    |  |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |                    |  |--StarList <DictPack_star_1 -> , SepMark KeyValExpr DictPack_star_1>
+   |     |  |                    |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |                    |     |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |                    |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |                    |     |  |  |--`y` at <8:11>
+   |     |  |                    |     |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |                    |     |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |                    |     |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |                    |     |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |                    |     |     |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |                    |     |     |           |--Literal <Literal -> Value>
+   |     |  |                    |     |     |           |  |--Value <Value -> Int Value_opti_1>
+   |     |  |                    |     |     |           |     |--`3` at <8:13>
+   |     |  |                    |     |     |           |     |--Optional <Value_opti_1 -> >
+   |     |  |                    |     |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |                    |     |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |                    |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |                    |     |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |                    |        |--IdentRef <IdentRef -> Ident>
+   |     |  |                    |        |  |--`style` at <8:20>
+   |     |  |                    |        |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |                    |           |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |                    |           |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |                    |           |     |--LinkCall <LinkCall -> Entity>
+   |     |  |                    |           |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |                    |           |           |--Literal <Literal -> String>
+   |     |  |                    |           |           |  |--`"alert-info"` at <8:33>
+   |     |  |                    |           |           |--Optional <Entity_opti_1 -> >
+   |     |  |                    |           |--Optional <EntityExpr_opti_1 -> >
+   |     |  |                    |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |--StmtEnd <StmtEnd -> SepMark>
+   |        |--SepMark <SepMark -> SepMark_star_1>
+   |           |--`\n\n` at <10:0>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> UseStmt>
+   |  |--UseStmt <UseStmt -> use Carrier UseStmt_opti_1 EntityExpr StmtEnd>
+   |     |--Carrier <Carrier -> DictUnpack>
+   |     |  |--DictUnpack <DictUnpack -> { SepMark DictUnpack_opti_2 SepMark }>
+   |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |--Optional <DictUnpack_opti_2 -> IdentRef DictUnpack_star_1>
+   |     |     |  |--IdentRef <IdentRef -> Ident>
+   |     |     |  |  |--`Const` at <10:11>
+   |     |     |  |--StarList <DictUnpack_star_1 -> , SepMark IdentRef DictUnpack_star_1>
+   |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |     |     |  |--`Ground` at <10:19>
+   |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |     |        |--`Sub` at <10:24>
+   |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |--Optional <UseStmt_opti_1 -> >
+   |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |  |  |--LinkCall <LinkCall -> Entity>
+   |     |  |  |     |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |  |        |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |  |        |  |--IdentRef <IdentRef -> Ident>
+   |     |  |  |        |  |  |--`from` at <10:31>
+   |     |  |  |        |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |  |        |--Optional <Entity_opti_1 -> >
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |           |--Literal <Literal -> String>
+   |     |  |           |  |--`"phot/units"` at <10:44>
+   |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |--StmtEnd <StmtEnd -> SepMark>
+   |        |--SepMark <SepMark -> SepMark_star_1>
+   |           |--`\n` at <11:0>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> UseStmt>
+   |  |--UseStmt <UseStmt -> use Carrier UseStmt_opti_1 EntityExpr StmtEnd>
+   |     |--Carrier <Carrier -> DictUnpack>
+   |     |  |--DictUnpack <DictUnpack -> { SepMark DictUnpack_opti_2 SepMark }>
+   |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |--Optional <DictUnpack_opti_2 -> IdentRef DictUnpack_star_1>
+   |     |     |  |--IdentRef <IdentRef -> Ident>
+   |     |     |  |  |--`AmpSysEl` at <11:14>
+   |     |     |  |--StarList <DictUnpack_star_1 -> , SepMark IdentRef DictUnpack_star_1>
+   |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |     |     |  |--`DC_Source` at <11:25>
+   |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |     |     |  |--`Linearizer` at <11:37>
+   |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |     |        |--`Resample` at <11:47>
+   |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |--Optional <UseStmt_opti_1 -> >
+   |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |  |  |--LinkCall <LinkCall -> Entity>
+   |     |  |  |     |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |  |        |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |  |        |  |--IdentRef <IdentRef -> Ident>
+   |     |  |  |        |  |  |--`from` at <11:54>
+   |     |  |  |        |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |  |        |--Optional <Entity_opti_1 -> >
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |           |--Literal <Literal -> String>
+   |     |  |           |  |--`"phot/el"` at <11:64>
+   |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |--StmtEnd <StmtEnd -> SepMark>
+   |        |--SepMark <SepMark -> SepMark_star_1>
+   |           |--`\n` at <12:0>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> UseStmt>
+   |  |--UseStmt <UseStmt -> use Carrier UseStmt_opti_1 EntityExpr StmtEnd>
+   |     |--Carrier <Carrier -> DictUnpack>
+   |     |  |--DictUnpack <DictUnpack -> { SepMark DictUnpack_opti_2 SepMark }>
+   |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |--Optional <DictUnpack_opti_2 -> IdentRef DictUnpack_star_1>
+   |     |     |  |--IdentRef <IdentRef -> Ident>
+   |     |     |  |  |--`FiberNLS` at <12:14>
+   |     |     |  |--StarList <DictUnpack_star_1 -> , SepMark IdentRef DictUnpack_star_1>
+   |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |     |     |  |--`ModulatorMZ` at <12:27>
+   |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |     |     |  |--`Photodiode` at <12:39>
+   |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |     |        |--`SignalAnalyzer` at <12:55>
+   |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |--Optional <UseStmt_opti_1 -> >
+   |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |  |  |--LinkCall <LinkCall -> Entity>
+   |     |  |  |     |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |  |        |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |  |        |  |--IdentRef <IdentRef -> Ident>
+   |     |  |  |        |  |  |--`from` at <12:62>
+   |     |  |  |        |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |  |        |--Optional <Entity_opti_1 -> >
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |           |--Literal <Literal -> String>
+   |     |  |           |  |--`"phot/op"` at <12:72>
+   |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |--StmtEnd <StmtEnd -> SepMark>
+   |        |--SepMark <SepMark -> SepMark_star_1>
+   |           |--`\n` at <13:0>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> UseStmt>
+   |  |--UseStmt <UseStmt -> use Carrier UseStmt_opti_1 EntityExpr StmtEnd>
+   |     |--Carrier <Carrier -> DictUnpack>
+   |     |  |--DictUnpack <DictUnpack -> { SepMark DictUnpack_opti_2 SepMark }>
+   |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |--Optional <DictUnpack_opti_2 -> IdentRef DictUnpack_star_1>
+   |     |     |  |--IdentRef <IdentRef -> Ident>
+   |     |     |  |  |--`NumericalAnalyzer2D` at <13:25>
+   |     |     |  |--StarList <DictUnpack_star_1 -> , SepMark IdentRef DictUnpack_star_1>
+   |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |     |     |  |--`PowerMeterEl` at <13:39>
+   |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |     |        |--`WDM_MUX_N_1_Ideal` at <13:58>
+   |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |--Optional <UseStmt_opti_1 -> >
+   |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |  |  |--LinkCall <LinkCall -> Entity>
+   |     |  |  |     |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |  |        |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |  |        |  |--IdentRef <IdentRef -> Ident>
+   |     |  |  |        |  |  |--`from` at <13:65>
+   |     |  |  |        |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |  |        |--Optional <Entity_opti_1 -> >
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |           |--Literal <Literal -> String>
+   |     |  |           |  |--`"phot/ana"` at <13:76>
+   |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |--StmtEnd <StmtEnd -> SepMark>
+   |        |--SepMark <SepMark -> SepMark_star_1>
+   |           |--`\n` at <14:0>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> UseStmt>
+   |  |--UseStmt <UseStmt -> use Carrier UseStmt_opti_1 EntityExpr StmtEnd>
+   |     |--Carrier <Carrier -> DictUnpack>
+   |     |  |--DictUnpack <DictUnpack -> { SepMark DictUnpack_opti_2 SepMark }>
+   |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |--Optional <DictUnpack_opti_2 -> IdentRef DictUnpack_star_1>
+   |     |     |  |--IdentRef <IdentRef -> Ident>
+   |     |     |     |--`ParameterController` at <14:25>
+   |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |--Optional <UseStmt_opti_1 -> >
+   |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |  |  |--LinkCall <LinkCall -> Entity>
+   |     |  |  |     |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |  |        |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |  |        |  |--IdentRef <IdentRef -> Ident>
+   |     |  |  |        |  |  |--`from` at <14:32>
+   |     |  |  |        |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |  |        |--Optional <Entity_opti_1 -> >
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |           |--Literal <Literal -> String>
+   |     |  |           |  |--`"phot/ctrl"` at <14:44>
+   |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |--StmtEnd <StmtEnd -> SepMark>
+   |        |--SepMark <SepMark -> SepMark_star_1>
+   |           |--`\n` at <15:0>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> UseStmt>
+   |  |--UseStmt <UseStmt -> use Carrier UseStmt_opti_1 EntityExpr StmtEnd>
+   |     |--Carrier <Carrier -> DictUnpack>
+   |     |  |--DictUnpack <DictUnpack -> { SepMark DictUnpack_opti_2 SepMark }>
+   |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |--Optional <DictUnpack_opti_2 -> IdentRef DictUnpack_star_1>
+   |     |     |  |--IdentRef <IdentRef -> Ident>
+   |     |     |  |  |--`Rx_El_mQAM_BER` at <15:20>
+   |     |     |  |--StarList <DictUnpack_star_1 -> , SepMark IdentRef DictUnpack_star_1>
+   |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |     |        |--`Tx_El_mQAM` at <15:32>
+   |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |--Optional <UseStmt_opti_1 -> >
+   |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |  |  |--LinkCall <LinkCall -> Entity>
+   |     |  |  |     |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |  |        |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |  |        |  |--IdentRef <IdentRef -> Ident>
+   |     |  |  |        |  |  |--`from` at <15:39>
+   |     |  |  |        |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |  |        |--Optional <Entity_opti_1 -> >
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |           |--Literal <Literal -> String>
+   |     |  |           |  |--`"phot/tr"` at <15:49>
+   |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |--StmtEnd <StmtEnd -> SepMark>
+   |        |--SepMark <SepMark -> SepMark_star_1>
+   |           |--`\n\n` at <17:0>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> LetStmt>
+   |  |--LetStmt <LetStmt -> let Carrier LetStmt_opti_1 LetStmt_opti_2 EntityExpr StmtEnd>
+   |     |--Carrier <Carrier -> EntityRef>
+   |     |  |--EntityRef <EntityRef -> IdentRef EntityRef_star_1>
+   |     |     |--IdentRef <IdentRef -> Ident>
+   |     |        |--`photodiodeSetting` at <17:21>
+   |     |--Optional <LetStmt_opti_1 -> : Type>
+   |     |  |--Type <Type -> IdentRef>
+   |     |     |--IdentRef <IdentRef -> Ident>
+   |     |        |--`PhotodiodeSettingTemplate` at <17:49>
+   |     |--Optional <LetStmt_opti_2 -> =>
+   |     |  |--`=` at <17:51>
+   |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |        |--Entity <Entity -> DictPack Entity_opti_1>
+   |     |  |           |--DictPack <DictPack -> { SepMark DictPack_opti_2 SepMark }>
+   |     |  |           |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |           |  |  |--`\n` at <18:0>
+   |     |  |           |  |--Optional <DictPack_opti_2 -> KeyValExpr DictPack_star_1>
+   |     |  |           |  |  |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |           |  |     |--IdentRef <IdentRef -> Ident>
+   |     |  |           |  |     |  |--`temperature` at <18:15>
+   |     |  |           |  |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |           |  |        |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |           |  |        |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |           |  |        |     |--LinkCall <LinkCall -> Entity>
+   |     |  |           |  |        |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |           |  |        |           |--Literal <Literal -> Value>
+   |     |  |           |  |        |           |  |--Value <Value -> Int Value_opti_1>
+   |     |  |           |  |        |           |     |--`300` at <18:21>
+   |     |  |           |  |        |           |     |--Optional <Value_opti_1 -> Unit>
+   |     |  |           |  |        |           |        |--``K`` at <18:24>
+   |     |  |           |  |        |           |--Optional <Entity_opti_1 -> >
+   |     |  |           |  |        |--Optional <EntityExpr_opti_1 -> >
+   |     |  |           |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |           |     |--`\n` at <19:0>
+   |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |--StmtEnd <StmtEnd -> SepMark>
+   |        |--SepMark <SepMark -> SepMark_star_1>
+   |           |--`\n\n` at <21:0>
+   |           |--`\n` at <22:0>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> LetStmt>
+   |  |--LetStmt <LetStmt -> let Carrier LetStmt_opti_1 LetStmt_opti_2 EntityExpr StmtEnd>
+   |     |--Carrier <Carrier -> EntityRef>
+   |     |  |--EntityRef <EntityRef -> IdentRef EntityRef_star_1>
+   |     |     |--IdentRef <IdentRef -> Ident>
+   |     |        |--`powerInput` at <22:14>
+   |     |--Optional <LetStmt_opti_1 -> >
+   |     |--Optional <LetStmt_opti_2 -> =>
+   |     |  |--`=` at <22:16>
+   |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |           |  |  |--`Const` at <22:22>
+   |     |  |           |  |--Optional <FunctorRef_opti_1 -> SuperList>
+   |     |  |           |     |--SuperList <SuperList -> < SepMark Argument SuperList_star_1 SepMark >>
+   |     |  |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |           |        |--Argument <Argument -> EntityExpr>
+   |     |  |           |        |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |           |        |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |           |        |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |           |        |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |           |        |     |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |           |        |     |           |--Literal <Literal -> Value>
+   |     |  |           |        |     |           |  |--Value <Value -> Int Value_opti_1>
+   |     |  |           |        |     |           |     |--`5` at <22:24>
+   |     |  |           |        |     |           |     |--Optional <Value_opti_1 -> Unit>
+   |     |  |           |        |     |           |        |--``V`` at <22:27>
+   |     |  |           |        |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |           |        |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |           |        |--StarList <SuperList_star_1 -> >
+   |     |  |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |--StmtEnd <StmtEnd -> SepMark>
+   |        |--SepMark <SepMark -> SepMark_star_1>
+   |           |--`\n\n` at <24:0>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> FuncDef>
+   |  |--FuncDef <FuncDef -> Annotations Modifiers func IdentRef FuncDef_opti_1 ParamDef FuncDef_opti_2 FuncDef_opti_3 FuncDef_opti_4 StmtPack StmtEnd>
+   |     |--Annotations <Annotations -> Annotations_star_1>
+   |     |  |--Annotation <Annotation -> @ [ Int , Int ]>
+   |     |  |  |--`14` at <24:4>
+   |     |  |  |--`7` at <24:7>
+   |     |  |--`\n` at <25:0>
+   |     |  |--Annotation <Annotation -> @ DictPack>
+   |     |  |  |--DictPack <DictPack -> { SepMark DictPack_opti_2 SepMark }>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Optional <DictPack_opti_2 -> KeyValExpr DictPack_star_1>
+   |     |  |     |  |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |     |  |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |  |  |  |--`boxed` at <25:7>
+   |     |  |     |  |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |  |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |  |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |  |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |  |     |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |  |     |           |--Literal <Literal -> true>
+   |     |  |     |  |     |           |  |--`true` at <25:12>
+   |     |  |     |  |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |  |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |  |--StarList <DictPack_star_1 -> , SepMark KeyValExpr DictPack_star_1>
+   |     |  |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |     |        |--IdentRef <IdentRef -> Ident>
+   |     |  |     |        |  |--`color` at <25:19>
+   |     |  |     |        |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |           |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |           |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |           |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |           |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |           |           |--Literal <Literal -> String>
+   |     |  |     |           |           |  |--`"blue"` at <25:26>
+   |     |  |     |           |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |           |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |--`\n` at <26:0>
+   |     |--Modifiers <Modifiers -> Modifiers_star_1>
+   |     |--IdentRef <IdentRef -> Ident>
+   |     |  |--`PowerControlEl` at <26:19>
+   |     |--Optional <FuncDef_opti_1 -> >
+   |     |--ParamDef <ParamDef -> ( SepMark ParamDef_opti_2 SepMark )>
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |--Optional <ParamDef_opti_2 -> KeyValDecl ParamDef_star_1>
+   |     |  |  |--KeyValDecl <KeyValDecl -> IdentRef KeyValDecl_opti_1 : NullableType KeyValDecl_opti_2>
+   |     |  |     |--IdentRef <IdentRef -> Ident>
+   |     |  |     |  |--`input` at <26:25>
+   |     |  |     |--Optional <KeyValDecl_opti_1 -> >
+   |     |  |     |--NullableType <NullableType -> Type NullableType_opti_1>
+   |     |  |     |  |--Type <Type -> IdentRef>
+   |     |  |     |  |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |  |     |--`ElSignal` at <26:36>
+   |     |  |     |  |--Optional <NullableType_opti_1 -> >
+   |     |  |     |--Optional <KeyValDecl_opti_2 -> >
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |--Optional <FuncDef_opti_2 -> -> Type>
+   |     |  |--Type <Type -> IdentRef>
+   |     |     |--IdentRef <IdentRef -> Ident>
+   |     |        |--`ElSignal` at <27:11>
+   |     |--Optional <FuncDef_opti_3 -> >
+   |     |--Optional <FuncDef_opti_4 -> LineEnd>
+   |     |  |--`\n` at <28:0>
+   |     |--StmtPack <StmtPack -> { SepMark StmtPack_opti_1 SepMark }>
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |  |--`\n` at <29:0>
+   |     |  |--Optional <StmtPack_opti_1 -> StmtList>
+   |     |  |  |--StmtList <StmtList -> StmtList_star_1>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> ExprStmt>
+   |     |  |     |  |--ExprStmt <ExprStmt -> ExprStmt_opti_1 EntityExpr StmtEnd>
+   |     |  |     |     |--Optional <ExprStmt_opti_1 -> >
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |     |  |           |--Literal <Literal -> String>
+   |     |  |     |     |  |           |  |--`"Power control"` at <29:19>
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> Annotation>
+   |     |  |     |     |  |              |--Annotation <Annotation -> @ ( Int , Int )>
+   |     |  |     |     |  |                 |--`6` at <29:22>
+   |     |  |     |     |  |                 |--`0` at <29:25>
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <30:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> LetStmt>
+   |     |  |     |  |--LetStmt <LetStmt -> let Carrier LetStmt_opti_1 LetStmt_opti_2 EntityExpr StmtEnd>
+   |     |  |     |     |--Carrier <Carrier -> ListUnpack>
+   |     |  |     |     |  |--ListUnpack <ListUnpack -> [ SepMark ListUnpack_opti_2 SepMark ]>
+   |     |  |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |     |--Optional <ListUnpack_opti_2 -> IdentRef ListUnpack_star_1>
+   |     |  |     |     |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |     |  |  |--`dcOutput` at <30:17>
+   |     |  |     |     |     |  |--StarList <ListUnpack_star_1 -> , SepMark IdentRef ListUnpack_star_1>
+   |     |  |     |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |     |        |--`powerOutput` at <30:30>
+   |     |  |     |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |--Optional <LetStmt_opti_1 -> >
+   |     |  |     |     |--Optional <LetStmt_opti_2 -> =>
+   |     |  |     |     |  |--`=` at <30:33>
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |     |     |  |        |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |  |  |--`input` at <30:39>
+   |     |  |     |     |  |        |     |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |        |     |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |           |  |  |--`PowerMeterEl` at <30:53>
+   |     |  |     |     |  |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <31:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> ExprStmt>
+   |     |  |     |  |--ExprStmt <ExprStmt -> ExprStmt_opti_1 EntityExpr StmtEnd>
+   |     |  |     |     |--Optional <ExprStmt_opti_1 -> >
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |     |     |  |        |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |  |  |--`dcOutput` at <31:12>
+   |     |  |     |     |  |        |     |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |        |     |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |           |  |  |--`Ground` at <31:20>
+   |     |  |     |     |  |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <32:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> LetStmt>
+   |     |  |     |  |--LetStmt <LetStmt -> let Carrier LetStmt_opti_1 LetStmt_opti_2 EntityExpr StmtEnd>
+   |     |  |     |     |--Carrier <Carrier -> EntityRef>
+   |     |  |     |     |  |--EntityRef <EntityRef -> IdentRef EntityRef_star_1>
+   |     |  |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |        |--`param` at <32:13>
+   |     |  |     |     |--Optional <LetStmt_opti_1 -> >
+   |     |  |     |     |--Optional <LetStmt_opti_2 -> =>
+   |     |  |     |     |  |--`=` at <32:15>
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |     |     |  |        |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |  |--Entity <Entity -> ListPack Entity_opti_1>
+   |     |  |     |     |  |        |     |--ListPack <ListPack -> [ SepMark ListPack_opti_2 SepMark ]>
+   |     |  |     |     |  |        |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |  |--Optional <ListPack_opti_2 -> EntityExpr ListPack_star_1>
+   |     |  |     |     |  |        |     |  |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |        |     |  |  |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |        |     |  |  |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |        |     |  |  |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |     |  |  |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |     |  |  |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |     |  |  |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |  |  |  |           |  |  |--`powerInput` at <32:27>
+   |     |  |     |     |  |        |     |  |  |  |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |        |     |  |  |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |     |  |  |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |  |        |     |  |  |--StarList <ListPack_star_1 -> , SepMark EntityExpr ListPack_star_1>
+   |     |  |     |     |  |        |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |  |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |        |     |  |        |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |        |     |  |        |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |        |     |  |        |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |     |  |        |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |     |  |        |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |     |  |        |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |  |        |           |  |  |--`powerOutput` at <32:40>
+   |     |  |     |     |  |        |     |  |        |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |        |     |  |        |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |     |  |        |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |  |        |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |           |  |  |--`Sub` at <32:46>
+   |     |  |     |     |  |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <33:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> RetStmt>
+   |     |  |        |--RetStmt <RetStmt -> ret RetStmt_opti_1 StmtEnd>
+   |     |  |           |--Optional <RetStmt_opti_1 -> EntityExpr>
+   |     |  |           |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |           |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |           |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |           |     |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |           |     |        |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |           |     |        |  |--LinkCall <LinkCall -> Entity>
+   |     |  |           |     |        |  |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |           |     |        |  |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |           |     |        |  |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |           |     |        |  |     |  |  |--`input` at <33:13>
+   |     |  |           |     |        |  |     |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |           |     |        |  |     |--Optional <Entity_opti_1 -> >
+   |     |  |           |     |        |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |           |     |        |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |           |     |        |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |           |     |        |     |  |  |--`ParameterController` at <33:34>
+   |     |  |           |     |        |     |  |--Optional <FunctorRef_opti_1 -> SuperList>
+   |     |  |           |     |        |     |     |--SuperList <SuperList -> < SepMark Argument SuperList_star_1 SepMark >>
+   |     |  |           |     |        |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |           |     |        |     |        |--Argument <Argument -> EntityExpr>
+   |     |  |           |     |        |     |        |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |           |     |        |     |        |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |           |     |        |     |        |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |           |     |        |     |        |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |           |     |        |     |        |     |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |           |     |        |     |        |     |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |           |     |        |     |        |     |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |           |     |        |     |        |     |           |  |  |--`param` at <33:40>
+   |     |  |           |     |        |     |        |     |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |           |     |        |     |        |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |           |     |        |     |        |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |           |     |        |     |        |--StarList <SuperList_star_1 -> >
+   |     |  |           |     |        |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |           |     |        |     |--Optional <Entity_opti_1 -> >
+   |     |  |           |     |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |           |     |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |           |     |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |           |     |           |  |  |--`AmpSysEl` at <33:51>
+   |     |  |           |     |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |           |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |           |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |           |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |              |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |                 |--`\n` at <34:0>
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |--StmtEnd <StmtEnd -> SepMark>
+   |        |--SepMark <SepMark -> SepMark_star_1>
+   |           |--`\n\n` at <36:0>
+   |           |--`\n` at <37:0>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> FuncDef>
+   |  |--FuncDef <FuncDef -> Annotations Modifiers func IdentRef FuncDef_opti_1 ParamDef FuncDef_opti_2 FuncDef_opti_3 FuncDef_opti_4 StmtPack StmtEnd>
+   |     |--Annotations <Annotations -> Annotations_star_1>
+   |     |  |--Annotation <Annotation -> @ DictPack>
+   |     |  |  |--DictPack <DictPack -> { SepMark DictPack_opti_2 SepMark }>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Optional <DictPack_opti_2 -> KeyValExpr DictPack_star_1>
+   |     |  |     |  |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |     |  |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |  |  |  |--`boxed` at <37:7>
+   |     |  |     |  |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |  |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |  |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |  |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |  |     |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |  |     |           |--Literal <Literal -> true>
+   |     |  |     |  |     |           |  |--`true` at <37:12>
+   |     |  |     |  |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |  |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |  |--StarList <DictPack_star_1 -> , SepMark KeyValExpr DictPack_star_1>
+   |     |  |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |     |        |--IdentRef <IdentRef -> Ident>
+   |     |  |     |        |  |--`color` at <37:19>
+   |     |  |     |        |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |           |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |           |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |           |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |           |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |           |           |--Literal <Literal -> String>
+   |     |  |     |           |           |  |--`"blue"` at <37:26>
+   |     |  |     |           |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |           |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |--`\n` at <38:0>
+   |     |--Modifiers <Modifiers -> Modifiers_star_1>
+   |     |--IdentRef <IdentRef -> Ident>
+   |     |  |--`SignalGenEl` at <38:16>
+   |     |--Optional <FuncDef_opti_1 -> >
+   |     |--ParamDef <ParamDef -> ( SepMark ParamDef_opti_2 SepMark )>
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |--Optional <ParamDef_opti_2 -> >
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |--Optional <FuncDef_opti_2 -> -> Type>
+   |     |  |--Type <Type -> IdentRef>
+   |     |     |--IdentRef <IdentRef -> Ident>
+   |     |        |--`ElSignal` at <38:30>
+   |     |--Optional <FuncDef_opti_3 -> >
+   |     |--Optional <FuncDef_opti_4 -> >
+   |     |--StmtPack <StmtPack -> { SepMark StmtPack_opti_1 SepMark }>
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |  |--`\n` at <39:0>
+   |     |  |--Optional <StmtPack_opti_1 -> StmtList>
+   |     |  |  |--StmtList <StmtList -> StmtList_star_1>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> ExprStmt>
+   |     |  |     |  |--ExprStmt <ExprStmt -> ExprStmt_opti_1 EntityExpr StmtEnd>
+   |     |  |     |     |--Optional <ExprStmt_opti_1 -> >
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |     |  |           |--Literal <Literal -> String>
+   |     |  |     |     |  |           |  |--`"Electrical domain"` at <39:23>
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> Annotation>
+   |     |  |     |     |  |              |--Annotation <Annotation -> @ ( Int , Int )>
+   |     |  |     |     |  |                 |--`10` at <39:27>
+   |     |  |     |     |  |                 |--`0` at <39:30>
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <40:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> LetStmt>
+   |     |  |     |  |--LetStmt <LetStmt -> let Carrier LetStmt_opti_1 LetStmt_opti_2 EntityExpr StmtEnd>
+   |     |  |     |     |--Carrier <Carrier -> EntityRef>
+   |     |  |     |     |  |--EntityRef <EntityRef -> IdentRef EntityRef_star_1>
+   |     |  |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |        |--`linearSignal` at <40:20>
+   |     |  |     |     |--Optional <LetStmt_opti_1 -> >
+   |     |  |     |     |--Optional <LetStmt_opti_2 -> =>
+   |     |  |     |     |  |--`=` at <40:22>
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |     |     |  |        |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |     |     |  |        |  |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |  |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |  |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |  |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |  |     |  |  |--`Rx_El_mQAM_BER` at <40:37>
+   |     |  |     |     |  |        |  |     |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |        |  |     |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |  |  |--`PowerControlEl` at <40:53>
+   |     |  |     |     |  |        |     |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |        |     |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |           |  |  |--`Linearizer` at <40:65>
+   |     |  |     |     |  |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <41:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> LetStmt>
+   |     |  |     |  |--LetStmt <LetStmt -> let Carrier LetStmt_opti_1 LetStmt_opti_2 EntityExpr StmtEnd>
+   |     |  |     |     |--Carrier <Carrier -> EntityRef>
+   |     |  |     |     |  |--EntityRef <EntityRef -> IdentRef EntityRef_star_1>
+   |     |  |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |        |--`dcSource` at <41:16>
+   |     |  |     |     |--Optional <LetStmt_opti_1 -> >
+   |     |  |     |     |--Optional <LetStmt_opti_2 -> =>
+   |     |  |     |     |  |--`=` at <41:18>
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |           |  |  |--`DC_Source` at <41:28>
+   |     |  |     |     |  |           |  |--Optional <FunctorRef_opti_1 -> SuperList>
+   |     |  |     |     |  |           |     |--SuperList <SuperList -> < SepMark Argument SuperList_star_1 SepMark >>
+   |     |  |     |     |  |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |           |        |--Argument <Argument -> EntityExpr>
+   |     |  |     |     |  |           |        |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |           |        |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |           |        |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |           |        |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |           |        |     |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |     |  |           |        |     |           |--Literal <Literal -> Value>
+   |     |  |     |     |  |           |        |     |           |  |--Value <Value -> Real Value_opti_1>
+   |     |  |     |     |  |           |        |     |           |     |--`0.5` at <41:32>
+   |     |  |     |     |  |           |        |     |           |     |--Optional <Value_opti_1 -> Unit>
+   |     |  |     |     |  |           |        |     |           |        |--``V`` at <41:35>
+   |     |  |     |     |  |           |        |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |           |        |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |  |           |        |--StarList <SuperList_star_1 -> >
+   |     |  |     |     |  |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <42:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> RetStmt>
+   |     |  |        |--RetStmt <RetStmt -> ret RetStmt_opti_1 StmtEnd>
+   |     |  |           |--Optional <RetStmt_opti_1 -> EntityExpr>
+   |     |  |           |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |           |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |           |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |           |     |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |           |     |        |--LinkCall <LinkCall -> Entity>
+   |     |  |           |     |        |  |--Entity <Entity -> ListPack Entity_opti_1>
+   |     |  |           |     |        |     |--ListPack <ListPack -> [ SepMark ListPack_opti_2 SepMark ]>
+   |     |  |           |     |        |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |           |     |        |     |  |--Optional <ListPack_opti_2 -> EntityExpr ListPack_star_1>
+   |     |  |           |     |        |     |  |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |           |     |        |     |  |  |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |           |     |        |     |  |  |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |           |     |        |     |  |  |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |           |     |        |     |  |  |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |           |     |        |     |  |  |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |           |     |        |     |  |  |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |           |     |        |     |  |  |  |           |  |  |--`linearSignal` at <42:21>
+   |     |  |           |     |        |     |  |  |  |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |           |     |        |     |  |  |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |           |     |        |     |  |  |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |           |     |        |     |  |  |--StarList <ListPack_star_1 -> , SepMark EntityExpr ListPack_star_1>
+   |     |  |           |     |        |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |           |     |        |     |  |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |           |     |        |     |  |        |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |           |     |        |     |  |        |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |           |     |        |     |  |        |     |--LinkCall <LinkCall -> Entity>
+   |     |  |           |     |        |     |  |        |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |           |     |        |     |  |        |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |           |     |        |     |  |        |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |           |     |        |     |  |        |           |  |  |--`dcSource` at <42:31>
+   |     |  |           |     |        |     |  |        |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |           |     |        |     |  |        |           |--Optional <Entity_opti_1 -> >
+   |     |  |           |     |        |     |  |        |--Optional <EntityExpr_opti_1 -> >
+   |     |  |           |     |        |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |           |     |        |     |--Optional <Entity_opti_1 -> >
+   |     |  |           |     |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |           |     |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |           |     |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |           |     |           |  |  |--`AddSignalsEl` at <42:46>
+   |     |  |           |     |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |           |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |           |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |           |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |              |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |                 |--`\n` at <43:0>
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |--StmtEnd <StmtEnd -> SepMark>
+   |        |--SepMark <SepMark -> SepMark_star_1>
+   |           |--`\n\n` at <45:0>
+   |           |--`\n` at <46:0>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> FuncDef>
+   |  |--FuncDef <FuncDef -> Annotations Modifiers func IdentRef FuncDef_opti_1 ParamDef FuncDef_opti_2 FuncDef_opti_3 FuncDef_opti_4 StmtPack StmtEnd>
+   |     |--Annotations <Annotations -> Annotations_star_1>
+   |     |  |--Annotation <Annotation -> @ DictPack>
+   |     |  |  |--DictPack <DictPack -> { SepMark DictPack_opti_2 SepMark }>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Optional <DictPack_opti_2 -> KeyValExpr DictPack_star_1>
+   |     |  |     |  |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |     |  |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |  |  |  |--`boxed` at <46:7>
+   |     |  |     |  |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |  |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |  |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |  |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |  |     |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |  |     |           |--Literal <Literal -> true>
+   |     |  |     |  |     |           |  |--`true` at <46:12>
+   |     |  |     |  |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |  |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |  |--StarList <DictPack_star_1 -> , SepMark KeyValExpr DictPack_star_1>
+   |     |  |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |     |        |--IdentRef <IdentRef -> Ident>
+   |     |  |     |        |  |--`color` at <46:19>
+   |     |  |     |        |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |           |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |           |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |           |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |           |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |           |           |--Literal <Literal -> String>
+   |     |  |     |           |           |  |--`"blue"` at <46:26>
+   |     |  |     |           |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |           |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |--`\n` at <47:0>
+   |     |--Modifiers <Modifiers -> Modifiers_star_1>
+   |     |--IdentRef <IdentRef -> Ident>
+   |     |  |--`SignalProcOp` at <47:17>
+   |     |--Optional <FuncDef_opti_1 -> >
+   |     |--ParamDef <ParamDef -> ( SepMark ParamDef_opti_2 SepMark )>
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |--Optional <ParamDef_opti_2 -> KeyValDecl ParamDef_star_1>
+   |     |  |  |--KeyValDecl <KeyValDecl -> IdentRef KeyValDecl_opti_1 : NullableType KeyValDecl_opti_2>
+   |     |  |     |--IdentRef <IdentRef -> Ident>
+   |     |  |     |  |--`input` at <47:23>
+   |     |  |     |--Optional <KeyValDecl_opti_1 -> Annotation>
+   |     |  |     |  |--Annotation <Annotation -> @ ( Int , Int )>
+   |     |  |     |     |--`0` at <47:26>
+   |     |  |     |     |--`0` at <47:29>
+   |     |  |     |--NullableType <NullableType -> Type NullableType_opti_1>
+   |     |  |     |  |--Type <Type -> IdentRef>
+   |     |  |     |  |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |  |     |--`ElSignal` at <47:41>
+   |     |  |     |  |--Optional <NullableType_opti_1 -> >
+   |     |  |     |--Optional <KeyValDecl_opti_2 -> >
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |--Optional <FuncDef_opti_2 -> -> Type>
+   |     |  |--Type <Type -> IdentRef>
+   |     |     |--IdentRef <IdentRef -> Ident>
+   |     |        |--`ElSignal` at <47:54>
+   |     |--Optional <FuncDef_opti_3 -> >
+   |     |--Optional <FuncDef_opti_4 -> >
+   |     |--StmtPack <StmtPack -> { SepMark StmtPack_opti_1 SepMark }>
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |  |--`\n` at <48:0>
+   |     |  |--Optional <StmtPack_opti_1 -> StmtList>
+   |     |  |  |--StmtList <StmtList -> StmtList_star_1>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> ExprStmt>
+   |     |  |     |  |--ExprStmt <ExprStmt -> ExprStmt_opti_1 EntityExpr StmtEnd>
+   |     |  |     |     |--Optional <ExprStmt_opti_1 -> >
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |     |  |           |--Literal <Literal -> String>
+   |     |  |     |     |  |           |  |--`"Optical domain"` at <48:20>
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> Annotation>
+   |     |  |     |     |  |              |--Annotation <Annotation -> @ ( Int , Int )>
+   |     |  |     |     |  |                 |--`10` at <48:24>
+   |     |  |     |     |  |                 |--`0` at <48:27>
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <49:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> LetStmt>
+   |     |  |     |  |--LetStmt <LetStmt -> let Carrier LetStmt_opti_1 LetStmt_opti_2 EntityExpr StmtEnd>
+   |     |  |     |     |--Carrier <Carrier -> EntityRef>
+   |     |  |     |     |  |--EntityRef <EntityRef -> IdentRef EntityRef_star_1>
+   |     |  |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |        |--`modulatedOpSig` at <49:22>
+   |     |  |     |     |--Optional <LetStmt_opti_1 -> >
+   |     |  |     |     |--Optional <LetStmt_opti_2 -> =>
+   |     |  |     |     |  |--`=` at <49:24>
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |     |     |  |        |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |  |--Entity <Entity -> ListPack Entity_opti_1>
+   |     |  |     |     |  |        |     |--ListPack <ListPack -> [ SepMark ListPack_opti_2 SepMark ]>
+   |     |  |     |     |  |        |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |  |--Optional <ListPack_opti_2 -> EntityExpr ListPack_star_1>
+   |     |  |     |     |  |        |     |  |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |        |     |  |  |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |        |     |  |  |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |        |     |  |  |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |     |  |  |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |     |  |  |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |     |  |  |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |  |  |  |           |  |  |--`input` at <49:31>
+   |     |  |     |     |  |        |     |  |  |  |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |        |     |  |  |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |     |  |  |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |  |        |     |  |  |--StarList <ListPack_star_1 -> , SepMark EntityExpr ListPack_star_1>
+   |     |  |     |     |  |        |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |  |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |        |     |  |        |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |        |     |  |        |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |        |     |  |        |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |     |  |        |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |     |  |        |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |     |  |        |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |  |        |           |  |  |--`LaserCW` at <49:40>
+   |     |  |     |     |  |        |     |  |        |           |  |--Optional <FunctorRef_opti_1 -> SuperList>
+   |     |  |     |     |  |        |     |  |        |           |     |--SuperList <SuperList -> < SepMark Argument SuperList_star_1 SepMark >>
+   |     |  |     |     |  |        |     |  |        |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |  |        |           |        |--Argument <Argument -> KeyValExpr>
+   |     |  |     |     |  |        |     |  |        |           |        |  |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |     |     |  |        |     |  |        |           |        |     |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |  |        |           |        |     |  |--`azimuth` at <49:48>
+   |     |  |     |     |  |        |     |  |        |           |        |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |        |     |  |        |           |        |        |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |        |     |  |        |           |        |        |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |        |     |  |        |           |        |        |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |     |  |        |           |        |        |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |     |  |        |     |  |        |           |        |        |           |--Literal <Literal -> Value>
+   |     |  |     |     |  |        |     |  |        |           |        |        |           |  |--Value <Value -> Int Value_opti_1>
+   |     |  |     |     |  |        |     |  |        |           |        |        |           |     |--`0` at <49:50>
+   |     |  |     |     |  |        |     |  |        |           |        |        |           |     |--Optional <Value_opti_1 -> Unit>
+   |     |  |     |     |  |        |     |  |        |           |        |        |           |        |--``deg`` at <49:55>
+   |     |  |     |     |  |        |     |  |        |           |        |        |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |     |  |        |           |        |        |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |  |        |     |  |        |           |        |--StarList <SuperList_star_1 -> >
+   |     |  |     |     |  |        |     |  |        |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |  |        |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |     |  |        |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |  |        |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |           |  |  |--`ModulatorMZ` at <49:70>
+   |     |  |     |     |  |           |  |--Optional <FunctorRef_opti_1 -> SuperList>
+   |     |  |     |     |  |           |     |--SuperList <SuperList -> < SepMark Argument SuperList_star_1 SepMark >>
+   |     |  |     |     |  |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |           |        |--Argument <Argument -> EntityExpr>
+   |     |  |     |     |  |           |        |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |           |        |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |           |        |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |           |        |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |           |        |     |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |     |  |           |        |     |           |--Literal <Literal -> Value>
+   |     |  |     |     |  |           |        |     |           |  |--Value <Value -> Int Value_opti_1>
+   |     |  |     |     |  |           |        |     |           |     |--`30` at <49:73>
+   |     |  |     |     |  |           |        |     |           |     |--Optional <Value_opti_1 -> Unit>
+   |     |  |     |     |  |           |        |     |           |        |--``dB`` at <49:77>
+   |     |  |     |     |  |           |        |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |           |        |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |  |           |        |--StarList <SuperList_star_1 -> >
+   |     |  |     |     |  |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <50:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> ExprStmt>
+   |     |  |     |  |--ExprStmt <ExprStmt -> ExprStmt_opti_1 EntityExpr StmtEnd>
+   |     |  |     |     |--Optional <ExprStmt_opti_1 -> >
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |     |     |  |        |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |     |     |  |        |  |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |  |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |  |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |  |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |  |     |  |  |--`modulatedOpSig` at <50:18>
+   |     |  |     |     |  |        |  |     |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |        |  |     |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |  |  |--`Resample` at <50:28>
+   |     |  |     |     |  |        |     |  |--Optional <FunctorRef_opti_1 -> SuperList>
+   |     |  |     |     |  |        |     |     |--SuperList <SuperList -> < SepMark Argument SuperList_star_1 SepMark >>
+   |     |  |     |     |  |        |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |        |--Argument <Argument -> KeyValExpr>
+   |     |  |     |     |  |        |     |        |  |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |     |     |  |        |     |        |     |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |        |     |  |--`centerFrequency` at <50:44>
+   |     |  |     |     |  |        |     |        |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |        |     |        |        |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |        |     |        |        |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |        |     |        |        |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |     |        |        |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |     |  |        |     |        |        |           |--Literal <Literal -> Value>
+   |     |  |     |     |  |        |     |        |        |           |  |--Value <Value -> Real Value_opti_1>
+   |     |  |     |     |  |        |     |        |        |           |     |--`192.1e12` at <50:53>
+   |     |  |     |     |  |        |     |        |        |           |     |--Optional <Value_opti_1 -> Unit>
+   |     |  |     |     |  |        |     |        |        |           |        |--``Hz`` at <50:57>
+   |     |  |     |     |  |        |     |        |        |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |     |        |        |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |  |        |     |        |--StarList <SuperList_star_1 -> >
+   |     |  |     |     |  |        |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |--Optional <Entity_opti_1 -> Annotation>
+   |     |  |     |     |  |        |        |--Annotation <Annotation -> @ ( Int , Int )>
+   |     |  |     |     |  |        |           |--`2` at <50:61>
+   |     |  |     |     |  |        |           |--`2` at <50:64>
+   |     |  |     |     |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |           |  |  |--`SignalAnalyzer` at <50:81>
+   |     |  |     |     |  |           |  |--Optional <FunctorRef_opti_1 -> SuperList>
+   |     |  |     |     |  |           |     |--SuperList <SuperList -> < SepMark Argument SuperList_star_1 SepMark >>
+   |     |  |     |     |  |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |           |        |--Argument <Argument -> EntityExpr>
+   |     |  |     |     |  |           |        |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |           |        |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |           |        |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |           |        |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |           |        |     |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |           |        |     |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |           |        |     |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |           |        |     |           |  |  |--`eye` at <50:85>
+   |     |  |     |     |  |           |        |     |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |           |        |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |           |        |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |  |           |        |--StarList <SuperList_star_1 -> >
+   |     |  |     |     |  |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> Annotation>
+   |     |  |     |     |  |              |--Annotation <Annotation -> @ ( Int , Int )>
+   |     |  |     |     |  |                 |--`4` at <50:89>
+   |     |  |     |     |  |                 |--`5` at <50:92>
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <51:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> LetStmt>
+   |     |  |     |  |--LetStmt <LetStmt -> let Carrier LetStmt_opti_1 LetStmt_opti_2 EntityExpr StmtEnd>
+   |     |  |     |     |--Carrier <Carrier -> EntityRef>
+   |     |  |     |     |  |--EntityRef <EntityRef -> IdentRef EntityRef_star_1>
+   |     |  |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |        |--`opSig` at <51:13>
+   |     |  |     |     |--Optional <LetStmt_opti_1 -> >
+   |     |  |     |     |--Optional <LetStmt_opti_2 -> =>
+   |     |  |     |     |  |--`=` at <51:15>
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |     |     |  |        |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |     |     |  |        |  |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |  |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |  |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |  |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |  |     |  |  |--`modulatedOpSig` at <51:30>
+   |     |  |     |     |  |        |  |     |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |        |  |     |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |  |  |--`FiberNLS` at <51:40>
+   |     |  |     |     |  |        |     |  |--Optional <FunctorRef_opti_1 -> SuperList>
+   |     |  |     |     |  |        |     |     |--SuperList <SuperList -> < SepMark Argument SuperList_star_1 SepMark >>
+   |     |  |     |     |  |        |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |        |--Argument <Argument -> EntityExpr>
+   |     |  |     |     |  |        |     |        |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |        |     |        |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |        |     |        |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |        |     |        |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |     |        |     |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |     |  |        |     |        |     |           |--Literal <Literal -> Value>
+   |     |  |     |     |  |        |     |        |     |           |  |--Value <Value -> Int Value_opti_1>
+   |     |  |     |     |  |        |     |        |     |           |     |--`10` at <51:43>
+   |     |  |     |     |  |        |     |        |     |           |     |--Optional <Value_opti_1 -> Unit>
+   |     |  |     |     |  |        |     |        |     |           |        |--``KM`` at <51:47>
+   |     |  |     |     |  |        |     |        |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |     |        |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |  |        |     |        |--StarList <SuperList_star_1 -> >
+   |     |  |     |     |  |        |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |           |  |  |--`WDM_MUX_N_1_Ideal` at <51:67>
+   |     |  |     |     |  |           |  |--Optional <FunctorRef_opti_1 -> SuperList>
+   |     |  |     |     |  |           |     |--SuperList <SuperList -> < SepMark Argument SuperList_star_1 SepMark >>
+   |     |  |     |     |  |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |           |        |--Argument <Argument -> EntityExpr>
+   |     |  |     |     |  |           |        |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |           |        |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |           |        |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |           |        |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |           |        |     |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |           |        |     |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |           |        |     |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |           |        |     |           |  |  |--`NoiseWhiteGaussOpt` at <51:86>
+   |     |  |     |     |  |           |        |     |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |           |        |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |           |        |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |  |           |        |--StarList <SuperList_star_1 -> >
+   |     |  |     |     |  |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <52:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> RetStmt>
+   |     |  |        |--RetStmt <RetStmt -> ret RetStmt_opti_1 StmtEnd>
+   |     |  |           |--Optional <RetStmt_opti_1 -> EntityExpr>
+   |     |  |           |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |           |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |           |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |           |     |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |           |     |        |--LinkCall <LinkCall -> Entity>
+   |     |  |           |     |        |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |           |     |        |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |           |     |        |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |           |     |        |     |  |  |--`opSig` at <52:13>
+   |     |  |           |     |        |     |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |           |     |        |     |--Optional <Entity_opti_1 -> >
+   |     |  |           |     |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |           |     |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |           |     |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |           |     |           |  |  |--`Photodiode` at <52:25>
+   |     |  |           |     |           |  |--Optional <FunctorRef_opti_1 -> SuperList>
+   |     |  |           |     |           |     |--SuperList <SuperList -> < SepMark Argument SuperList_star_1 SepMark >>
+   |     |  |           |     |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |           |     |           |        |--Argument <Argument -> EntityExpr>
+   |     |  |           |     |           |        |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |           |     |           |        |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |           |     |           |        |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |           |     |           |        |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |           |     |           |        |     |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |           |     |           |        |     |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |           |     |           |        |     |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |           |     |           |        |     |           |  |  |--`photodiodeSetting` at <52:43>
+   |     |  |           |     |           |        |     |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |           |     |           |        |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |           |     |           |        |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |           |     |           |        |--StarList <SuperList_star_1 -> >
+   |     |  |           |     |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |           |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |           |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |           |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |              |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |                 |--`\n` at <53:0>
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |--StmtEnd <StmtEnd -> SepMark>
+   |        |--SepMark <SepMark -> SepMark_star_1>
+   |           |--`\n\n` at <55:0>
+   |           |--`\n` at <56:0>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> FuncDef>
+   |  |--FuncDef <FuncDef -> Annotations Modifiers func IdentRef FuncDef_opti_1 ParamDef FuncDef_opti_2 FuncDef_opti_3 FuncDef_opti_4 StmtPack StmtEnd>
+   |     |--Annotations <Annotations -> Annotations_star_1>
+   |     |  |--Annotation <Annotation -> @ DictPack>
+   |     |  |  |--DictPack <DictPack -> { SepMark DictPack_opti_2 SepMark }>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Optional <DictPack_opti_2 -> KeyValExpr DictPack_star_1>
+   |     |  |     |  |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |     |  |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |  |  |  |--`boxed` at <56:7>
+   |     |  |     |  |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |  |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |  |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |  |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |  |     |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |  |     |           |--Literal <Literal -> true>
+   |     |  |     |  |     |           |  |--`true` at <56:12>
+   |     |  |     |  |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |  |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |  |--StarList <DictPack_star_1 -> , SepMark KeyValExpr DictPack_star_1>
+   |     |  |     |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |     |        |--IdentRef <IdentRef -> Ident>
+   |     |  |     |        |  |--`color` at <56:19>
+   |     |  |     |        |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |           |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |           |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |           |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |           |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |           |           |--Literal <Literal -> String>
+   |     |  |     |           |           |  |--`"blue"` at <56:26>
+   |     |  |     |           |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |           |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |--`\n` at <57:0>
+   |     |--Modifiers <Modifiers -> Modifiers_star_1>
+   |     |--IdentRef <IdentRef -> Ident>
+   |     |  |--`SignalRecvEl` at <57:17>
+   |     |--Optional <FuncDef_opti_1 -> >
+   |     |--ParamDef <ParamDef -> ( SepMark ParamDef_opti_2 SepMark )>
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |--Optional <ParamDef_opti_2 -> KeyValDecl ParamDef_star_1>
+   |     |  |  |--KeyValDecl <KeyValDecl -> IdentRef KeyValDecl_opti_1 : NullableType KeyValDecl_opti_2>
+   |     |  |     |--IdentRef <IdentRef -> Ident>
+   |     |  |     |  |--`input` at <57:23>
+   |     |  |     |--Optional <KeyValDecl_opti_1 -> >
+   |     |  |     |--NullableType <NullableType -> Type NullableType_opti_1>
+   |     |  |     |  |--Type <Type -> IdentRef>
+   |     |  |     |  |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |  |     |--`ElSignal` at <57:34>
+   |     |  |     |  |--Optional <NullableType_opti_1 -> >
+   |     |  |     |--Optional <KeyValDecl_opti_2 -> >
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |--Optional <FuncDef_opti_2 -> >
+   |     |--Optional <FuncDef_opti_3 -> >
+   |     |--Optional <FuncDef_opti_4 -> >
+   |     |--StmtPack <StmtPack -> { SepMark StmtPack_opti_1 SepMark }>
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |  |--`\n` at <58:0>
+   |     |  |--Optional <StmtPack_opti_1 -> StmtList>
+   |     |  |  |--StmtList <StmtList -> StmtList_star_1>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> ExprStmt>
+   |     |  |     |  |--ExprStmt <ExprStmt -> ExprStmt_opti_1 EntityExpr StmtEnd>
+   |     |  |     |     |--Optional <ExprStmt_opti_1 -> >
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |     |  |           |--Literal <Literal -> String>
+   |     |  |     |     |  |           |  |--`"Electrical domain"` at <58:23>
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> Annotation>
+   |     |  |     |     |  |              |--Annotation <Annotation -> @ ( Int , Int )>
+   |     |  |     |     |  |                 |--`0` at <58:26>
+   |     |  |     |     |  |                 |--`0` at <58:29>
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <59:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> LetStmt>
+   |     |  |     |  |--LetStmt <LetStmt -> let Carrier LetStmt_opti_1 LetStmt_opti_2 EntityExpr StmtEnd>
+   |     |  |     |     |--Carrier <Carrier -> EntityRef>
+   |     |  |     |     |  |--EntityRef <EntityRef -> IdentRef EntityRef_star_1>
+   |     |  |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |        |--`samples` at <59:15>
+   |     |  |     |     |--Optional <LetStmt_opti_1 -> >
+   |     |  |     |     |--Optional <LetStmt_opti_2 -> =>
+   |     |  |     |     |  |--`=` at <59:17>
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |     |     |  |        |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |  |  |--`input` at <59:23>
+   |     |  |     |     |  |        |     |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |        |     |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |           |  |  |--`Resample` at <59:33>
+   |     |  |     |     |  |           |  |--Optional <FunctorRef_opti_1 -> SuperList>
+   |     |  |     |     |  |           |     |--SuperList <SuperList -> < SepMark Argument SuperList_star_1 SepMark >>
+   |     |  |     |     |  |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |           |        |--Argument <Argument -> KeyValExpr>
+   |     |  |     |     |  |           |        |  |--KeyValExpr <KeyValExpr -> IdentRef = EntityExpr>
+   |     |  |     |     |  |           |        |     |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |           |        |     |  |--`centerFrequency` at <59:49>
+   |     |  |     |     |  |           |        |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |           |        |        |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |           |        |        |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |           |        |        |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |           |        |        |        |--Entity <Entity -> Literal Entity_opti_1>
+   |     |  |     |     |  |           |        |        |           |--Literal <Literal -> Value>
+   |     |  |     |     |  |           |        |        |           |  |--Value <Value -> Real Value_opti_1>
+   |     |  |     |     |  |           |        |        |           |     |--`193.1e12` at <59:58>
+   |     |  |     |     |  |           |        |        |           |     |--Optional <Value_opti_1 -> Unit>
+   |     |  |     |     |  |           |        |        |           |        |--``Hz`` at <59:62>
+   |     |  |     |     |  |           |        |        |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |           |        |        |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |  |           |        |--StarList <SuperList_star_1 -> >
+   |     |  |     |     |  |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <60:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> LetStmt>
+   |     |  |     |  |--LetStmt <LetStmt -> let Carrier LetStmt_opti_1 LetStmt_opti_2 EntityExpr StmtEnd>
+   |     |  |     |     |--Carrier <Carrier -> EntityRef>
+   |     |  |     |     |  |--EntityRef <EntityRef -> IdentRef EntityRef_star_1>
+   |     |  |     |     |     |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |        |--`ber` at <60:11>
+   |     |  |     |     |--Optional <LetStmt_opti_1 -> >
+   |     |  |     |     |--Optional <LetStmt_opti_2 -> =>
+   |     |  |     |     |  |--`=` at <60:13>
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |     |     |  |        |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |  |  |--`samples` at <60:21>
+   |     |  |     |     |  |        |     |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |        |     |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |           |  |  |--`Rx_El_mQAM_BER` at <60:37>
+   |     |  |     |     |  |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <61:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> ExprStmt>
+   |     |  |     |  |--ExprStmt <ExprStmt -> ExprStmt_opti_1 EntityExpr StmtEnd>
+   |     |  |     |     |--Optional <ExprStmt_opti_1 -> >
+   |     |  |     |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |     |     |  |        |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |  |--Entity <Entity -> ListPack Entity_opti_1>
+   |     |  |     |     |  |        |     |--ListPack <ListPack -> [ SepMark ListPack_opti_2 SepMark ]>
+   |     |  |     |     |  |        |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |  |--Optional <ListPack_opti_2 -> EntityExpr ListPack_star_1>
+   |     |  |     |     |  |        |     |  |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |        |     |  |  |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |        |     |  |  |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |        |     |  |  |  |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |     |  |  |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |     |  |  |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |     |  |  |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |  |  |  |           |  |  |--`powerInput` at <61:15>
+   |     |  |     |     |  |        |     |  |  |  |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |        |     |  |  |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |     |  |  |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |  |        |     |  |  |--StarList <ListPack_star_1 -> , SepMark EntityExpr ListPack_star_1>
+   |     |  |     |     |  |        |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |  |     |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |     |     |  |        |     |  |        |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |     |     |  |        |     |  |        |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |     |     |  |        |     |  |        |     |--LinkCall <LinkCall -> Entity>
+   |     |  |     |     |  |        |     |  |        |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |        |     |  |        |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |        |     |  |        |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |        |     |  |        |           |  |  |--`ber` at <61:20>
+   |     |  |     |     |  |        |     |  |        |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |        |     |  |        |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |     |  |        |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |  |        |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |     |  |        |     |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |     |     |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |     |     |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |     |     |  |           |  |  |--`NumericalAnalyzer2D` at <61:42>
+   |     |  |     |     |  |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |     |     |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |     |     |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |     |     |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |     |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |           |--`\n` at <62:0>
+   |     |  |     |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |     |--Stmt <Stmt -> ExprStmt>
+   |     |  |        |--ExprStmt <ExprStmt -> ExprStmt_opti_1 EntityExpr StmtEnd>
+   |     |  |           |--Optional <ExprStmt_opti_1 -> >
+   |     |  |           |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |           |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |           |  |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |           |  |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+   |     |  |           |  |        |--LinkCall <LinkCall -> Entity>
+   |     |  |           |  |        |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |           |  |        |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |           |  |        |     |  |--IdentRef <IdentRef -> Ident>
+   |     |  |           |  |        |     |  |  |--`samples` at <62:11>
+   |     |  |           |  |        |     |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |           |  |        |     |--Optional <Entity_opti_1 -> >
+   |     |  |           |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |           |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |           |  |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |           |  |           |  |  |--`SignalAnalyzer` at <62:27>
+   |     |  |           |  |           |  |--Optional <FunctorRef_opti_1 -> SuperList>
+   |     |  |           |  |           |     |--SuperList <SuperList -> < SepMark Argument SuperList_star_1 SepMark >>
+   |     |  |           |  |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |           |  |           |        |--Argument <Argument -> EntityExpr>
+   |     |  |           |  |           |        |  |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+   |     |  |           |  |           |        |     |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+   |     |  |           |  |           |        |     |  |--ChainUnit <ChainUnit -> LinkCall>
+   |     |  |           |  |           |        |     |     |--LinkCall <LinkCall -> Entity>
+   |     |  |           |  |           |        |     |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+   |     |  |           |  |           |        |     |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+   |     |  |           |  |           |        |     |           |  |--IdentRef <IdentRef -> Ident>
+   |     |  |           |  |           |        |     |           |  |  |--`hist` at <62:32>
+   |     |  |           |  |           |        |     |           |  |--Optional <FunctorRef_opti_1 -> >
+   |     |  |           |  |           |        |     |           |--Optional <Entity_opti_1 -> >
+   |     |  |           |  |           |        |     |--Optional <EntityExpr_opti_1 -> >
+   |     |  |           |  |           |        |--StarList <SuperList_star_1 -> >
+   |     |  |           |  |           |        |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |           |  |           |--Optional <Entity_opti_1 -> >
+   |     |  |           |  |--Optional <EntityExpr_opti_1 -> >
+   |     |  |           |--StmtEnd <StmtEnd -> SepMark>
+   |     |  |              |--SepMark <SepMark -> SepMark_star_1>
+   |     |  |                 |--`\n` at <63:0>
+   |     |  |--SepMark <SepMark -> SepMark_star_1>
+   |     |--StmtEnd <StmtEnd -> SepMark>
+   |        |--SepMark <SepMark -> SepMark_star_1>
+   |           |--`\n\n` at <65:0>
+   |           |--`\n` at <66:0>
+   |--SepMark <SepMark -> SepMark_star_1>
+   |--Stmt <Stmt -> ExprStmt>
+      |--ExprStmt <ExprStmt -> ExprStmt_opti_1 EntityExpr StmtEnd>
+         |--Optional <ExprStmt_opti_1 -> >
+         |--EntityExpr <EntityExpr -> EntityChain EntityExpr_opti_1>
+         |  |--EntityChain <EntityChain -> ChainUnit EntityChain_star_1>
+         |  |  |--ChainUnit <ChainUnit -> LinkCall>
+         |  |     |--LinkCall <LinkCall -> LinkCall -> Entity>
+         |  |        |--LinkCall <LinkCall -> LinkCall -> Entity>
+         |  |        |  |--LinkCall <LinkCall -> Entity>
+         |  |        |  |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+         |  |        |  |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+         |  |        |  |     |  |--IdentRef <IdentRef -> Ident>
+         |  |        |  |     |  |  |--`SignalGenEl` at <66:11>
+         |  |        |  |     |  |--Optional <FunctorRef_opti_1 -> >
+         |  |        |  |     |--Optional <Entity_opti_1 -> >
+         |  |        |  |--Entity <Entity -> FunctorRef Entity_opti_1>
+         |  |        |     |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+         |  |        |     |  |--IdentRef <IdentRef -> Ident>
+         |  |        |     |  |  |--`SignalProcOp` at <66:25>
+         |  |        |     |  |--Optional <FunctorRef_opti_1 -> >
+         |  |        |     |--Optional <Entity_opti_1 -> >
+         |  |        |--Entity <Entity -> FunctorRef Entity_opti_1>
+         |  |           |--FunctorRef <FunctorRef -> IdentRef FunctorRef_opti_1>
+         |  |           |  |--IdentRef <IdentRef -> Ident>
+         |  |           |  |  |--`SignalRecvEl` at <66:39>
+         |  |           |  |--Optional <FunctorRef_opti_1 -> >
+         |  |           |--Optional <Entity_opti_1 -> >
+         |  |--Optional <EntityExpr_opti_1 -> >
+         |--StmtEnd <StmtEnd -> SepMark>
+            |--SepMark <SepMark -> SepMark_star_1>
+               |--`\n` at <68:0>

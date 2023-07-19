@@ -1,0 +1,81 @@
+#meta GRAMMAR ${ $}
+#meta MAPPING ${ $}
+
+GRAMMAR ${
+    IdentRef        ::=     $Ident ;
+    Complex         ::=     $Int `+` $Int `i` | $Real `+` $Real `i` ;
+    Value           ::=     ( $Int | $Real | Complex ) [ $Unit ] ;
+    FormatStr       ::=     `f` $String ;
+    Literal         ::=     Value | $String | $MultiStr | FormatStr
+                            | `null` | `true` | `false` ;
+    SepMark         ::=     { $LineEnd } ;
+
+    Type            ::=     InnerType | IdentRef | `any` ;
+    NullableType    ::=     Type [ `?` ] ;
+    InnerType       ::=     `number` | `string` | `bool` | `functor` | `block`
+                            | NumberType | StructType ;
+    ScalarType      ::=     `int` | `real` | `complex` ;
+    VectorType      ::=     `array` [ `<` ScalarType `>` ] [ `[` $Int `]` ]
+                            | `matrix` [ `<` ScalarType `>` ] { `[` $Int `]` } ;
+    NumberType      ::=     ScalarType | VectorType ;
+    StructType      ::=     `list` [ `<` NullableType { `,` NullableType } `>` ] [ `[` $Int `]` ]
+                            | `dict` [ `<` Type `,` NullableType `>` ] ;
+    TypeDef         ::=     `type` IdentRef [ `=` ] ( Type | TypePack ) StmtEnd ;
+    EnumDef         ::=     `enum` IdentRef [ `=` ] DictUnpack StmtEnd ;
+
+    FunctorRef      ::=     IdentRef [ SuperList ] ;
+    EntityRef       ::=     IdentRef { `[` ( $Int | IdentRef ) `]` } ;
+    Entity          ::=     ( EntityRef | FunctorRef | Literal | ListPack | DictPack ) [ Annotation ] ;
+    ChainUnit       ::=     Entity | LinkCall ;
+    EntityChain     ::=     ChainUnit { ChainUnit } ;
+    EntityExpr      ::=     EntityChain [ `as` Type ] ;
+
+    KeyValExpr      ::=     IdentRef `=` EntityExpr ;
+    KeyValDecl      ::=     IdentRef [ Annotation ] `:` NullableType [ `=` EntityExpr ] ;
+    ListPack        ::=     `[` SepMark [ EntityExpr { `,` SepMark EntityExpr } ] SepMark `]` ;
+    ListUnpack      ::=     `[` SepMark [ IdentRef { `,` SepMark IdentRef } ] SepMark `]` ;
+    DictPack        ::=     `{` SepMark [ KeyValExpr { `,` SepMark KeyValExpr } ] SepMark `}` ;
+    DictUnpack      ::=     `{` SepMark [ IdentRef { `,` SepMark IdentRef } ] SepMark `}` ;
+    TypePack        ::=     `{` SepMark [ KeyValDecl { `,` SepMark KeyValDecl } ] SepMark `}` ;
+    StmtPack        ::=     `{` SepMark [ StmtList ] SepMark `}` ;
+
+    Argument        ::=     EntityExpr | KeyValExpr ;
+    Annotation      ::=     `@` ( IdentRef | DictPack | `(` $Int `,` $Int `)` | `[` $Int `,` $Int `]` ) ;
+    Annotations     ::=     { Annotation $LineEnd } ;
+    Modifiers       ::=     { `inner` | `sync` | `scoped` | `static` | `atomic` } ;
+    SuperList       ::=     `<` SepMark Argument { `,` SepMark Argument } SepMark `>` ;
+    SuperDef        ::=     `<` SepMark KeyValDecl { `,` SepMark KeyValDecl } SepMark `>` ;
+    ParamDef        ::=     `(` SepMark [ KeyValDecl { `,` SepMark KeyValDecl } ] SepMark `)` ;
+    ArgsList        ::=     `(` SepMark [ Argument { `,` SepMark Argument } ] SepMark `)` ;
+    FuncDef         ::=     Annotations
+                            Modifiers `func` IdentRef [ SuperDef ] ParamDef
+                            [ `->` Type ] [ `=` ] [ $LineEnd ]
+                            StmtPack StmtEnd ;
+    LinkCall        ::=     LinkCall ( `.` | `->` ) Entity 
+                            | FunctorRef ArgsList
+                            | Entity ;
+
+    Carrier         ::=     EntityRef | ListUnpack | DictUnpack ;
+    StmtEnd         ::=     SepMark | `;` ;
+    UseStmt         ::=     `use` Carrier [ `=` ] EntityExpr StmtEnd ;
+    LetStmt         ::=     `let` Carrier [ `:` Type ] [ `=` ] EntityExpr StmtEnd ;
+    RetStmt         ::=     `ret` [ EntityExpr ] StmtEnd ;
+    ExprStmt        ::=     [ Annotations ] EntityExpr StmtEnd ;
+    Stmt            ::=     LetStmt | UseStmt
+                            | FuncDef | TypeDef
+                            | GetStmt | RetStmt
+                            | ExprStmt ;
+    StmtList        ::=     { SepMark Stmt } ;
+
+    Program*        ::=     StmtList ;
+$}
+
+MAPPING ${
+    $Ident     -->     @IDENTIFIER ;
+    $Unit      -->     @UNIT ;
+    $Int       -->     @INTEGER ;
+    $Real      -->     @REAL ;
+    $String    -->     @STRING ;
+    $MultiStr  -->     @MULTI_STR ;
+    $LineEnd   -->     @LINE_END ;
+$}

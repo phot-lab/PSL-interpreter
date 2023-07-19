@@ -1,0 +1,15 @@
+use ident from<xml> "path" as type
+use ident = xml"path" as type
+use { component, link, run, show } from "phot" as module
+use { component, link, run, show } from<pkg> "phot" as module
+
+package { component, link, run, show }
+
+global func pkg : String -> module = {}
+global func xml : String -> module = {}
+global func json : String -> module = {}
+
+global func from<parser : Functor = psl> : String -> Module = {
+    get url
+    ret parser(url)
+}

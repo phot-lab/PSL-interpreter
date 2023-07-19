@@ -1,0 +1,17 @@
+using { component, link, run, show, signal } from "phot"
+
+let comp1 : component = {
+    name: "comp1",
+}
+
+let comp2 : component = {
+    name: "comp2",
+}
+
+let comp3 : component = {
+    name: "comp3",
+}
+
+let comp4 : component = comp1 + comp2 + comp3
+
+let sig : signal
